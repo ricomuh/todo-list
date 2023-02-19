@@ -16,7 +16,6 @@ To run the application, follow these steps:
 2. Navigate to the repository directory using the command:
 
    ```bash
-   Copy code
    cd todo-list
    ```
 
