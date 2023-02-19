@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>TODO List with Alpine.js</title>
+  </head>
+  <body x-data="{ todos: []}">
+    <form
+      action="#"
+      x-data="{ todo: ''}"
+      @submit.prevent="todos.push(todo); todo = '';"
+    >
+      <input type="text" name="todo" x-model="todo" />
+      <button type="submit">Submit</button>
+    </form>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>To Do</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template x-for="(item, index) in todos" :key="index">
+          <tr>
+            <td x-text="index+1"></td>
+            <td x-text="item"></td>
+            <td>
+              <button @click="todos[index] = prompt('Edit todo', item)">
+                Edit
+              </button>
+              <button @click="todos.splice(index, 1)">Remove</button>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </body>
+</html>
