@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>TODO List with React.js</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="text/babel">
+      function App() {
+        const [todos, setTodos] = React.useState([]);
+        const todoRef = React.useRef();
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          setTodos([...todos, todoRef.current.value]);
+          todoRef.current.value = "";
+        };
+
+        const handleEdit = (index) => {
+          const newTodos = [...todos];
+          newTodos[index] = prompt("Edit todo", newTodos[index]);
+          setTodos(newTodos);
+        };
+
+        const handleRemove = (index) => {
+          const newTodos = [...todos];
+          newTodos.splice(index, 1);
+          setTodos(newTodos);
+        };
+
+        return (
+          <>
+            <form action="#" onSubmit={handleSubmit}>
+              <input type="text" id="todo" ref={todoRef} />
+              <button type="submit">Submit</button>
+            </form>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>To Do</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {todos.map((item, index) => (
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{item}</td>
+                    <td>
+                      <button onClick={() => handleEdit(index)}>Edit</button>
+                      <button onClick={() => handleRemove(index)}>
+                        Remove
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

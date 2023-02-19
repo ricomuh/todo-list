@@ -14,7 +14,7 @@
       x-data="{ todo: ''}"
       @submit.prevent="todos.push(todo); todo = '';"
     >
-      <input type="text" name="todo" x-model="todo" />
+      <input type="text" x-model="todo" />
       <button type="submit">Submit</button>
     </form>
     <table border="1">
