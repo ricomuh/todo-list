@@ -8,7 +8,31 @@
     <title>TODO List with Vue.js</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <form action="#" @submit="handleSubmit">
+        <input type="text" id="todo" ref="todo" />
+        <button type="submit">Submit</button>
+      </form>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>To Do</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in todos" :key="index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ item }}</td>
+            <td>
+              <button @click="handleEdit(index)">Edit</button>
+              <button @click="handleRemove(index)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <script type="module">
       import { createApp } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js";
@@ -32,31 +56,6 @@
             this.todos.splice(index, 1);
           },
         },
-        template: `
-            <form action="#" @submit="handleSubmit">
-                <input type="text" id="todo" ref="todo" />
-                <button type="submit">Submit</button>
-            </form>
-            <table border="1">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>To Do</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(item, index) in todos" :key="index">
-                    <td>{{ index + 1 }}</td>
-                    <td>{{ item }}</td>
-                    <td>
-                        <button @click="handleEdit(index)">Edit</button>
-                        <button @click="handleRemove(index)">Remove</button>
-                    </td>
-                </tr>
-            </tbody>
-            </table>
-        `,
       }).mount("#app");
     </script>
   </body>
