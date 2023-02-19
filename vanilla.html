@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>TODO List with Vanilla Javascript</title>
+  </head>
+  <body>
+    <form action="#" id="form">
+      <input type="text" name="todo" id="todo" />
+      <button type="submit" id="submit">Submit</button>
+    </form>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>To Do</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="list"></tbody>
+    </table>
+    <script>
+      const todo = [];
+      const form = document.querySelector("#form");
+      const list = document.querySelector("#list");
+
+      const refresh = () => {
+        list.innerHTML = "";
+        todo.forEach((item, index) => {
+          list.innerHTML += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item}</td>
+                    <td>
+                        <button onclick="edit(${index})">Edit</button>
+                        <button onclick="remove(${index})">Remove</button>
+                    </td>
+                </tr>
+                `;
+        });
+      };
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        console.log("submit");
+        todo.push(form.todo.value);
+        refresh();
+        form.todo.value = "";
+      });
+
+      const remove = (index) => {
+        todo.splice(index, 1);
+        refresh();
+      };
+
+      const edit = (index) => {
+        todo[index] = prompt("Edit todo", todo[index]);
+        refresh();
+      };
+    </script>
+  </body>
+</html>

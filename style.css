@@ -1,0 +1,21 @@
+form {
+  display: flex;
+}
+input {
+  padding: 0.5em 1em;
+  font-size: 12pt;
+  border-radius: 0.5em;
+  border: 1px solid gray;
+}
+button {
+  padding: 0.5em 1em;
+  font-size: 12pt;
+  border-radius: 0.5em;
+  border: none;
+  background-color: #a29bff;
+  cursor: pointer;
+  transition: 200ms;
+}
+button:hover {
+  background-color: #827af3;
+}
