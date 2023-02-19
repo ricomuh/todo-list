@@ -17,7 +17,7 @@ To run the application, follow these steps:
 
    ```bash
    Copy code
-   cd <repository-name>
+   cd todo-list
    ```
 
 3. Choose the framework you want to use by opening the corresponding HTML file:
