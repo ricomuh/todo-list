@@ -8,17 +8,17 @@ To run the application, follow these steps:
 
 1. Clone the repository to your local machine using the following command:
 
-```bash
-Copy code
-git clone https://github.com/ricomuh/todo-list.git
-```
+   ```bash
+   Copy code
+   git clone https://github.com/ricomuh/todo-list.git
+   ```
 
 2. Navigate to the repository directory using the command:
 
-```bash
-Copy code
-cd <repository-name>
-```
+   ```bash
+   Copy code
+   cd <repository-name>
+   ```
 
 3. Choose the framework you want to use by opening the corresponding HTML file:
 
